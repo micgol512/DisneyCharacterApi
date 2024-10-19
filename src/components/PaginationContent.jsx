@@ -1,16 +1,14 @@
 import { Pagination } from "@mui/material";
-import AmountCharacter from "./AmountCharacter";
 import Wrapper from "./Wrapper";
 import { useContext } from "react";
 import { Theme } from "../context/Theme";
-import { AccPageContext, AmountContext } from "../context";
+import { AccPageContext } from "../context";
 import { useFetch } from "../hooks/useFetch";
 
 const PaginationContent = () => {
   const { theme } = useContext(Theme);
   const { accPage, setAccPage } = useContext(AccPageContext);
-  const { amount } = useContext(AmountContext);
-  const { info } = useFetch(accPage, amount);
+  const { info } = useFetch(accPage);
   let bg = "#1f1f1f";
   let color = "#f5f5f5";
   let borderColor = "#f5f5f5";
@@ -19,6 +17,7 @@ const PaginationContent = () => {
     color = "#1f1f1f";
     borderColor = "#1f1f1f";
   }
+
   const handleChange = (_e, value) => {
     setAccPage(value);
     // console.log(value);
@@ -48,7 +47,6 @@ const PaginationContent = () => {
           },
         }}
       />
-      <AmountCharacter />
     </Wrapper>
   );
 };

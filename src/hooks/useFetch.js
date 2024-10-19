@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 
 const BASE_URL = `https://api.disneyapi.dev/character`;
-//page=2&pageSize=100
-export const useFetch = (page = "1", pageSize = "50", id) => {
+
+export const useFetch = (page = "1", id) => {
   const [characters, setCharacters] = useState([]);
   const [info, setInfo] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(null);
+
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const resp = await fetch(
-          `${BASE_URL}/${id ? id : ":id"}?page=${page}&pageSize=${pageSize}`
-        );
+        const resp = await fetch(`${BASE_URL}/${id ? id : ":id"}?page=${page}`);
         if (!resp.ok) {
           throw new Error("Network response was not ok");
         }
@@ -30,7 +29,7 @@ export const useFetch = (page = "1", pageSize = "50", id) => {
     return () => {
       setLoading(false);
     };
-  }, [page, pageSize, id]);
-  //   console.log(`URL: ${BASE_URL}/${id ? id : ":id"}?page=${page}&pageSize=${pageSize}`);
+  }, [page, id]);
+
   return { info, characters, loading, errors };
 };

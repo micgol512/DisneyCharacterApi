@@ -7,16 +7,15 @@
 :root {
   font-family: DisneyFont, cursive, sans-serif;
   font-size: large;
-  position: relative;
 }
 body {
-  position: absolute;
   width: 100vw;
   height: 100vh;
   margin: 0;
   top: 0;
   left: 0;
-  background-color: linear-gradient(180deg, #04060f 0%, #090e25 50%, #1a2a6c 100%);
+  background: linear-gradient(180deg, #04060f 0%, #090e25 50%, #1a2a6c 100%) center/cover
+    no-repeat fixed;
   /* background: linear-gradient(180deg, #1a2a6c 0%, #152156 50%, #04060f 100%); */
   color: #dfdfdf;
   /* background-attachment: fixed;

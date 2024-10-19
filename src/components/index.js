@@ -1,4 +1,3 @@
-import AmountCharacter from "./AmountCharacter";
 import Button from "./Button";
 import Card from "./Card";
 import CardList from "./CardLists";
@@ -7,8 +6,8 @@ import Image from "./Image";
 import MainContent from "./MainContent";
 import PaginationContent from "./PaginationContent";
 import ThemeChanger from "./ThemeChanger";
+import Wrapper from "./Wrapper";
 export {
-  AmountCharacter,
   Button,
   Card,
   CardList,
@@ -17,4 +16,5 @@ export {
   MainContent,
   PaginationContent,
   ThemeChanger,
+  Wrapper,
 };

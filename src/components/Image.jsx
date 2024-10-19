@@ -6,6 +6,7 @@ const StyledImage = styled.img`
   border: 1px solid #808080;
   border-radius: ${(props) => (props.round ? `50%` : `8px 32px`)};
   object-fit: cover;
+  backgrund-color: #808080;
   width: ${(props) => (props.width ? props.width : `100px`)};
   height: ${(props) => (props.height ? props.height : `100px`)};
 `;

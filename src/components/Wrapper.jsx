@@ -3,7 +3,13 @@ import { Box } from "@mui/material";
 import { useContext } from "react";
 import { Theme } from "../context/Theme";
 
-const Wrapper = ({ children, direction = "row", mt = "10px", main = false }) => {
+const Wrapper = ({
+  children,
+  direction = "row",
+  mt = "10px",
+  main = false,
+  ...additionalStyle
+}) => {
   const { theme } = useContext(Theme);
   let bg = "#1f1f1f";
   let color = "#f5f5f5";
@@ -27,6 +33,7 @@ const Wrapper = ({ children, direction = "row", mt = "10px", main = false }) => 
         background: main ? "none" : bg,
         color: color,
       }}
+      {...additionalStyle}
     >
       {children}
     </Box>

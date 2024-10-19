@@ -39,12 +39,11 @@ const Base = styled.div`
 const Card = ({ character }) => {
   const { theme } = useContext(Theme);
   const [showInfo, setShowInfo] = useState(false);
-  // const showDetails = (id)=>{
-  //   consst useFetch()
-  // }
+
   const infoChanger = () => setShowInfo((prev) => !prev);
+
   const infoDetail = createPortal(
-    <ShowDetailsModal id={character._id} onClick={infoChanger} />,
+    <ShowDetailsModal id={character._id} onClick={infoChanger} open={showInfo} />,
     document.body
   );
 
