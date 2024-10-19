@@ -8,6 +8,8 @@ export default defineConfig({
     sourcemap: true,
   },
   server: {
+    host: true, // lub podaj bezpośrednio adres IP, np. '192.168.1.x'
+    port: 5175,
     sourcemap: true,
   },
 });
