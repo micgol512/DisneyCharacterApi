@@ -5,8 +5,9 @@
   font-style: normal;
 }
 :root {
-  font-family: DisneyFont, cursive, sans-serif;
+  font-family: cursive, sans-serif;
   font-size: large;
+  box-sizing: border-box;
 }
 body {
   width: 100vw;
@@ -20,4 +21,8 @@ body {
   color: #dfdfdf;
   /* background-attachment: fixed;
   background-size: cover; */
+}
+*::first-letter {
+  font-family: DisneyFont, cursive, sans-serif;
+  font-size: 1.5rem;
 }

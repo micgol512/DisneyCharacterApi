@@ -32,8 +32,8 @@ const Wrapper = ({
         flexDirection: direction,
         background: main ? "none" : bg,
         color: color,
+        ...additionalStyle,
       }}
-      {...additionalStyle}
     >
       {children}
     </Box>

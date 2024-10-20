@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import CardLists from "./CardLists";
-import styled from "styled-components";
 import { AccPageContext, Theme } from "../context";
 import { CircularProgress } from "@mui/material";
 import { useFetch } from "../hooks/useFetch";
@@ -29,8 +28,8 @@ const MainContent = () => {
   const renderContent = () => <CardLists characters={characters} />;
 
   const renderCurrentView = () => {
-    if (loading) renderLoad();
-    if (errors) renderError();
+    if (loading) return renderLoad();
+    if (errors) return renderError();
     return renderContent();
   };
   return <Wrapper main={true}>{renderCurrentView()}</Wrapper>;

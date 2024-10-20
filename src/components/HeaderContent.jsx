@@ -13,7 +13,9 @@ const HeaderContent = () => {
   return (
     <Wrapper mt="0">
       <Wrapper mt="0" maxWidth={"1280px"}>
-        <div style={{ fontSize: "32px" }}>Disney Characters</div>
+        <div style={{ fontSize: "32px", fontFamily: "DisneyFont, cursive, sans-serif" }}>
+          Disney Characters
+        </div>
         <ThemeChanger onChange={toggleTheme} />
       </Wrapper>
     </Wrapper>
