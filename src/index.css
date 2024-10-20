@@ -25,4 +25,5 @@ body {
 *::first-letter {
   font-family: DisneyFont, cursive, sans-serif;
   font-size: 1.5rem;
+  line-height: 1rem;
 }
