@@ -1,12 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import Wrapper from "../components/Wrapper";
 import { useEffect } from "react";
 import { Divider } from "@mui/material";
 const StyledSpan = styled.span`
+  position: sticky;
+  background: inherit;
+  display: block;
+  top: 0;
+  width: 100%;
   font-size: larger;
   align-self: start;
+  z-index: 3;
 `;
 const StyledUl = styled.ul`
   margin: 0;
@@ -29,6 +34,27 @@ const StyledLi = styled.li`
     left: -10px;
   }
 `;
+const DetailsContent = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: inherit;
+  justyfy-content: start;
+  padding: 0;
+  border-radius: 8px;
+  height: auto;
+  min-width: 140px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    appearance: none;
+    background-color: white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: black;
+  }
+`;
 const FilmsDetails = ({ character, keys }) => {
   useEffect(() => {
     //console.log(`Komponent filmowy dla: ${character.name} :`, character._id);
@@ -37,30 +63,24 @@ const FilmsDetails = ({ character, keys }) => {
   const renderUI = () => {
     return (
       <>
-        {keys.map((key, kindex) => (
+        {keys.map((key) => (
           <>
-            {kindex !== 0 && (
+            {
               <Divider
                 orientation="vertical"
                 variant="fullWidth"
                 flexItem
                 sx={{ background: "#808080" }}
               />
-            )}
-            <Wrapper
-              direction="column"
-              mt={"0"}
-              key={`${key}-${kindex}`}
-              width={"min(75%, 1000px)"}
-              height={"70%"}
-            >
+            }
+            <DetailsContent>
               <StyledSpan>{`${key[0].toUpperCase()}${key.slice(1)}:`}</StyledSpan>
               <StyledUl>
                 {character[key].map((film, findex) => (
                   <StyledLi key={`${film}-${findex}`}>{film} </StyledLi>
                 ))}
               </StyledUl>
-            </Wrapper>
+            </DetailsContent>
           </>
         ))}
       </>

@@ -10,11 +10,6 @@ import FilmsDetails from "./FilmsDetails";
 import { useGetSmthToShow } from "../hooks/useGetSmthToShow";
 
 const DetailsInfo = styled.div`
-  display: flex;
-  padding: 10px;
-  flex-flow: column nowrap;
-  text-align: center;
-  align-items: center;
   ${(props) =>
     props.theme === "dark"
       ? css`
@@ -27,9 +22,18 @@ const DetailsInfo = styled.div`
           color: #1f1f1f;
           box-shadow: 0px 0px 5px #1f1f1f;
         `}
+  margin: 10% auto;
+  display: flex;
+  padding: 10px;
+  // flex-flow: column nowrap;
+  text-align: center;
+  align-items: top;
+  justify-content: center;
   border-radius: 32px;
   width: auto;
+  max-width: 1000px;
   height: auto;
+  max-height: 200px;
 `;
 
 const ShowDetailsModal = ({ id, onClick, open }) => {
@@ -49,8 +53,8 @@ const ShowDetailsModal = ({ id, onClick, open }) => {
   const renderError = () => <div>Error: {errors}</div>;
   const renderCard = () => {
     return (
-      <Wrapper borderRadius={"8px"} mt={"0px"}>
-        <Wrapper direction="column" mt={"0px"} maxWidth={"200px"}>
+      <>
+        <Wrapper direction="column" mt={"0px"} width={"150px"} maxHeight={"400px"} main>
           <Image
             src={characters.imageUrl}
             alt={characters.name}
@@ -65,18 +69,16 @@ const ShowDetailsModal = ({ id, onClick, open }) => {
         </Wrapper>
         {smthToShow.length !== 0 && (
           <>
-            <Divider
+            {/* <Divider
               orientation="vertical"
               variant="fullWidth"
               flexItem
               sx={{ background: "#808080" }}
-            />
-            <Wrapper mt={"0px"}>
-              <FilmsDetails character={characters} keys={smthToShow} />
-            </Wrapper>
+            /> */}
+            <FilmsDetails character={characters} keys={smthToShow} />
           </>
         )}
-      </Wrapper>
+      </>
     );
   };
 
