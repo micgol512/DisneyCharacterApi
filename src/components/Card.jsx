@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-import styled, { css } from "styled-components";
-import { Theme } from "../context/Theme";
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
+import styled, { css } from "styled-components";
+import { Theme } from "../context/Theme";
 import ShowDetailsModal from "../modal/ShowDetailsModal";
-import Image from "./Image";
-import Button from "./Button";
-// import { useFetch } from "../hooks/useFetch";
+import { Image, Button } from "./index";
 
 const Base = styled.div`
   display: flex;

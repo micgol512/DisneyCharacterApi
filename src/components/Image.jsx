@@ -30,8 +30,6 @@ const Image = ({ src, alt, round, width, height }) => {
     };
     checkImage();
   }, [src]);
-  //   return <StyledImage src={src} alt={alt} round={round} width={width} height={height} />;
-  // };
 
   return (
     <>

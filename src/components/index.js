@@ -1,6 +1,6 @@
 import Button from "./Button";
 import Card from "./Card";
-import CardList from "./CardLists";
+import CardLists from "./CardLists";
 import HeaderContent from "./HeaderContent";
 import Image from "./Image";
 import MainContent from "./MainContent";
@@ -10,7 +10,7 @@ import Wrapper from "./Wrapper";
 export {
   Button,
   Card,
-  CardList,
+  CardLists,
   HeaderContent,
   Image,
   MainContent,

@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
-import CardLists from "./CardLists";
+// import CardLists from "./CardLists";
 import { AccPageContext, Theme } from "../context";
 import { CircularProgress } from "@mui/material";
 import { useFetch } from "../hooks/useFetch";
-import Wrapper from "./Wrapper";
+import { Wrapper, CardLists } from "../components/index";
 
 const MainContent = () => {
   const { theme } = useContext(Theme);

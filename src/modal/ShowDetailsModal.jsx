@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import styled, { css } from "styled-components";
 import { Theme } from "../context/Theme";
 import { Button, Image } from "../components/index";
-import { Backdrop, CircularProgress, Divider } from "@mui/material";
+import { Backdrop, CircularProgress } from "@mui/material";
 import Wrapper from "../components/Wrapper";
 import FilmsDetails from "./FilmsDetails";
 import { useGetSmthToShow } from "../hooks/useGetSmthToShow";

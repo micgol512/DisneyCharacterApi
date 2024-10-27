@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { useEffect } from "react";
 import { Divider } from "@mui/material";
+
 const StyledSpan = styled.span`
   position: sticky;
   background: inherit;
@@ -65,14 +64,12 @@ const FilmsDetails = ({ character, keys }) => {
       <>
         {keys.map((key) => (
           <>
-            {
-              <Divider
-                orientation="vertical"
-                variant="fullWidth"
-                flexItem
-                sx={{ background: "#808080" }}
-              />
-            }
+            <Divider
+              orientation="vertical"
+              variant="fullWidth"
+              flexItem
+              sx={{ background: "#808080" }}
+            />
             <DetailsContent>
               <StyledSpan>{`${key[0].toUpperCase()}${key.slice(1)}:`}</StyledSpan>
               <StyledUl>
