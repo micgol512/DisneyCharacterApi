@@ -12,30 +12,20 @@ const Base = styled.div`
   flex-flow: column nowrap;
   text-align: center;
   justify-content: space-between;
-  background-color: blue;
-  box-shadow: 2px 2px 5px black;
-  ${(props) =>
-    props.theme === "dark"
-      ? css`
-          background-color: #1f1f1f;
-          color: #f5f5f5;
-          box-shadow: 2px 2px 5px #f5f5f5;
-        `
-      : css`
-          background-color: #f5f5f5;
-          color: #1f1f1f;
-          box-shadow: 2px 2px 5px #1f1f1f;
-        `}
+  align-items: stretch;
   border-radius: 8px 32px;
   width: 150px;
   height: 200px;
+  ${({ themeStyles }) => css`
+    ${{ ...themeStyles }}
+  `}
   &:hover {
     scale: 1.05;
   }
 `;
 
 const Card = ({ character }) => {
-  const { theme } = useContext(Theme);
+  const { theme, themeStyles } = useContext(Theme);
   const [showInfo, setShowInfo] = useState(false);
 
   const infoChanger = () => setShowInfo((prev) => !prev);
@@ -46,13 +36,8 @@ const Card = ({ character }) => {
   );
 
   return (
-    <Base theme={theme}>
-      <Image
-        src={character.imageUrl}
-        alt={character.name}
-        width={"150px"}
-        height={"125px"}
-      />
+    <Base theme={theme} themeStyles={themeStyles}>
+      <Image src={character.imageUrl} alt={character.name} height={"125px"} />
       <span>{character.name}</span>
       <Button onClick={infoChanger}>Show more</Button>
       {showInfo && infoDetail}

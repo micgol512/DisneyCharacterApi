@@ -7,8 +7,8 @@ const StyledImage = styled.img`
   border-radius: ${(props) => (props.round ? `50%` : `8px 32px`)};
   object-fit: cover;
   backgrund-color: #808080;
-  width: ${(props) => (props.width ? props.width : `100px`)};
-  height: ${(props) => (props.height ? props.height : `100px`)};
+  width: ${(props) => (props.width ? props.width : `150px`)};
+  height: ${(props) => (props.height ? props.height : `150px`)};
 `;
 
 const Image = ({ src, alt, round, width, height }) => {

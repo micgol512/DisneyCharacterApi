@@ -1,26 +1,14 @@
 /* eslint-disable react/prop-types */
-import { Box } from "@mui/material";
 import { useContext } from "react";
+import { Box } from "@mui/material";
 import { Theme } from "../context/Theme";
 
-const Wrapper = ({
-  children,
-  direction = "row",
-  mt = "10px",
-  main = false,
-  ...additionalStyle
-}) => {
-  const { theme } = useContext(Theme);
-  let bg = "#1f1f1f";
-  let color = "#f5f5f5";
-  if (theme === "light") {
-    bg = "#f5f5f5";
-    color = "#1f1f1f";
-  }
+const Wrapper = ({ children, direction = "row", main = false, ...additionalStyle }) => {
+  const { themeStyles } = useContext(Theme);
   return (
     <Box
       sx={{
-        marginTop: mt,
+        marginTop: "0px",
         padding: "5px",
         display: "flex",
         width: "100%",
@@ -30,8 +18,9 @@ const Wrapper = ({
         alignItems: "center",
         gap: "5px",
         flexDirection: direction,
-        background: main ? "none" : bg,
-        color: color,
+        background: main ? "none" : themeStyles.backgroundColor,
+        color: themeStyles.color,
+        borderColor: themeStyles.borderColor,
         ...additionalStyle,
       }}
     >

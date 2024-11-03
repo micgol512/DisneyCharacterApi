@@ -11,8 +11,8 @@ const HeaderContent = () => {
   };
 
   return (
-    <Wrapper mt="0">
-      <Wrapper mt="0" maxWidth={"1280px"}>
+    <Wrapper>
+      <Wrapper maxWidth={"1280px"}>
         <div style={{ fontSize: "32px", fontFamily: "DisneyFont, cursive, sans-serif" }}>
           Disney Characters
         </div>

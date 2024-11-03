@@ -1,46 +1,35 @@
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
 import styled, { css } from "styled-components";
-import { Theme } from "../context/Theme";
-import { Button, Image } from "../components/index";
 import { Backdrop, CircularProgress } from "@mui/material";
-import Wrapper from "../components/Wrapper";
+import { Theme } from "../context";
+import { useFetch } from "../hooks/useFetch";
+import { useGetCharDetails } from "../hooks/useGetCharDetails";
+import { Button, Image, Wrapper } from "../components/index";
+
 import FilmsDetails from "./FilmsDetails";
-import { useGetSmthToShow } from "../hooks/useGetSmthToShow";
 
 const DetailsInfo = styled.div`
-  ${(props) =>
-    props.theme === "dark"
-      ? css`
-          background-color: #1f1f1f;
-          color: #f5f5f5;
-          box-shadow: 0px 0px 5px #f5f5f5;
-        `
-      : css`
-          background-color: #f5f5f5;
-          color: #1f1f1f;
-          box-shadow: 0px 0px 5px #1f1f1f;
-        `}
   margin: 10% auto;
   display: flex;
   padding: 10px;
-  // flex-flow: column nowrap;
   text-align: center;
-  align-items: top;
+  align-items: stretch
   justify-content: center;
   border-radius: 32px;
   width: auto;
   max-width: 1000px;
   height: auto;
   max-height: 200px;
+  ${({ themeStyles }) => css`
+    ${{ ...themeStyles }}
+  `}
 `;
 
 const ShowDetailsModal = ({ id, onClick, open }) => {
   const { characters, loading, errors } = useFetch("1", id);
-  const { theme } = useContext(Theme);
-
-  const { smthToShow } = useGetSmthToShow(characters);
+  const { themeStyles } = useContext(Theme);
+  const { charDetails } = useGetCharDetails(characters);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -49,43 +38,34 @@ const ShowDetailsModal = ({ id, onClick, open }) => {
     };
   }, []);
 
-  const renderLoad = () => <CircularProgress />;
-  const renderError = () => <div>Error: {errors}</div>;
-  const renderCard = () => {
+  const renderDetailsInfo = () => {
+    if (loading) return <CircularProgress />;
+    if (errors) return <div>Error: {errors}</div>;
     return (
       <>
-        <Wrapper direction="column" mt={"0px"} width={"150px"} maxHeight={"400px"} main>
+        <Wrapper
+          direction="column"
+          minWidth={"150px"}
+          maxWidth={"200px"}
+          maxHeight={"400px"}
+          main
+        >
           <Image
             src={characters.imageUrl}
             alt={characters.name}
-            width={"150px"}
             height={"150px"}
             round={"true"}
           />
           <div>{characters.name}</div>
           <Button onClick={onClick} round={"true"}>
-            Zamknij
+            Close
           </Button>
         </Wrapper>
-        {smthToShow.length !== 0 && (
-          <>
-            {/* <Divider
-              orientation="vertical"
-              variant="fullWidth"
-              flexItem
-              sx={{ background: "#808080" }}
-            /> */}
-            <FilmsDetails character={characters} keys={smthToShow} />
-          </>
+        {charDetails.length !== 0 && (
+          <FilmsDetails character={characters} keys={charDetails} />
         )}
       </>
     );
-  };
-
-  const renderCurrentView = () => {
-    if (loading) return renderLoad();
-    if (errors) return renderError();
-    return renderCard();
   };
 
   return (
@@ -98,22 +78,10 @@ const ShowDetailsModal = ({ id, onClick, open }) => {
       open={open}
       onClick={onClick}
     >
-      <DetailsInfo theme={theme} onClick={(e) => e.stopPropagation()}>
-        {renderCurrentView()}
+      <DetailsInfo themeStyles={themeStyles} onClick={(e) => e.stopPropagation()}>
+        {renderDetailsInfo()}
       </DetailsInfo>
     </Backdrop>
   );
 };
 export default ShowDetailsModal;
-
-// #info-wrapper {
-//   display: flex;
-//   width: 90%;
-//   height: 70%;
-//   position: relative;
-//   flex-flow: column nowrap;
-//   margin: 10% auto;
-//   border-radius: 0 0 0.5rem 0.5rem;
-//   width: min(75%, 1000px);
-//   height: 70%;
-// }

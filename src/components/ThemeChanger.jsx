@@ -59,16 +59,13 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const ThemeChanger = ({ onChange }) => {
-  return (
-    <FormControlLabel
-      control={<MaterialUISwitch onChange={onChange} />}
-      label={
-        <span style={{ fontFamily: "DisneyFont, cursive, sans-serif" }}>
-          Toggle Theme
-        </span>
-      }
-    />
-  );
-};
+const ThemeChanger = ({ onChange }) => (
+  <FormControlLabel
+    control={<MaterialUISwitch onChange={onChange} />}
+    label={
+      <span style={{ fontFamily: "DisneyFont, cursive, sans-serif" }}>Toggle Theme</span>
+    }
+  />
+);
+
 export default ThemeChanger;

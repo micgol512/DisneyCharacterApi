@@ -6,26 +6,16 @@ import { AccPageContext } from "../context";
 import { useFetch } from "../hooks/useFetch";
 
 const PaginationContent = () => {
-  const { theme } = useContext(Theme);
+  const { themeStyles } = useContext(Theme);
   const { accPage, setAccPage } = useContext(AccPageContext);
   const { info } = useFetch(accPage);
-  let bg = "#1f1f1f";
-  let color = "#f5f5f5";
-  let borderColor = "#f5f5f5";
-  if (theme === "light") {
-    bg = "#f5f5f5";
-    color = "#1f1f1f";
-    borderColor = "#1f1f1f";
-  }
 
   const handleChange = (_e, value) => {
     setAccPage(value);
-    // console.log(value);
   };
 
   return (
     <Wrapper>
-      {/* {console.log(info)} */}
       <Pagination
         count={info.totalPages}
         page={accPage}
@@ -36,13 +26,9 @@ const PaginationContent = () => {
         onChange={handleChange}
         sx={{
           "& .MuiPaginationItem-root": {
-            backgroundColor: bg,
-            color: color,
-            borderColor,
+            ...themeStyles,
             "&.Mui-selected": {
               backgroundColor: "#808080",
-              color: color,
-              borderColor,
             },
           },
         }}

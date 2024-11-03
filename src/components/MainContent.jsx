@@ -1,8 +1,7 @@
 import { useContext, useEffect } from "react";
-// import CardLists from "./CardLists";
-import { AccPageContext, Theme } from "../context";
 import { CircularProgress } from "@mui/material";
 import { useFetch } from "../hooks/useFetch";
+import { AccPageContext, Theme } from "../context";
 import { Wrapper, CardLists } from "../components/index";
 
 const MainContent = () => {
@@ -23,15 +22,16 @@ const MainContent = () => {
     }
   }, [info.totalPages]);
 
-  const renderLoad = () => <CircularProgress color="inherit" size="3rem" />;
-  const renderError = () => <div>Error: {errors}</div>;
-  const renderContent = () => <CardLists characters={characters} />;
-
   const renderCurrentView = () => {
-    if (loading) return renderLoad();
-    if (errors) return renderError();
-    return renderContent();
+    if (loading) return <CircularProgress color="inherit" size="4rem" />;
+    if (errors) return <div>Error: {errors}</div>;
+    return <CardLists characters={characters} />;
   };
-  return <Wrapper main={true}>{renderCurrentView()}</Wrapper>;
+
+  return (
+    <Wrapper main={true} marginTop={"10px"}>
+      {renderCurrentView()}
+    </Wrapper>
+  );
 };
 export default MainContent;

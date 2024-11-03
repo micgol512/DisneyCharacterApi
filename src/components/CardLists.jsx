@@ -10,14 +10,12 @@ const CharWrapper = styled.div`
   justify-content: center;
 `;
 
-const CardLists = ({ characters }) => {
-  return (
-    <CharWrapper>
-      {characters?.map((character) => (
-        <Card key={`Char${character._id}`} character={character} />
-      ))}
-    </CharWrapper>
-  );
-};
+const CardLists = ({ characters }) => (
+  <CharWrapper>
+    {characters?.map((character) => (
+      <Card key={`Char${character._id}`} character={character} />
+    ))}
+  </CharWrapper>
+);
 
 export default CardLists;
