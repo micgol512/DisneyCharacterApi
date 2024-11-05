@@ -15,6 +15,7 @@ const StyledButton = styled.button`
     scale: 0.95;
   }
 `;
+
 const Button = ({ onClick, children, round }) => (
   <StyledButton onClick={onClick} round={round}>
     {children}

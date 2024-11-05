@@ -1,9 +1,8 @@
-import { Pagination } from "@mui/material";
-import Wrapper from "./Wrapper";
 import { useContext } from "react";
-import { Theme } from "../context/Theme";
-import { AccPageContext } from "../context";
+import { Pagination } from "@mui/material";
 import { useFetch } from "../hooks/useFetch";
+import { Theme, AccPageContext } from "../context";
+import { Wrapper } from "./";
 
 const PaginationContent = () => {
   const { themeStyles } = useContext(Theme);

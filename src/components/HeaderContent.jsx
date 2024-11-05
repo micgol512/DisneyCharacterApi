@@ -1,21 +1,20 @@
 import { useContext } from "react";
-import ThemeChanger from "./ThemeChanger";
-import { Theme } from "../context/Theme";
-import Wrapper from "./Wrapper";
+import styled from "styled-components";
+import { Theme } from "../context";
+import { Wrapper, ThemeChanger } from "./";
+
+const StyledTitle = styled.div`
+  font-size: 32px;
+  font-family: DisneyFont, cursive, sans-serif;
+`;
 
 const HeaderContent = () => {
-  const { setTheme } = useContext(Theme);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
+  const { toggleTheme } = useContext(Theme);
 
   return (
     <Wrapper>
       <Wrapper maxWidth={"1280px"}>
-        <div style={{ fontSize: "32px", fontFamily: "DisneyFont, cursive, sans-serif" }}>
-          Disney Characters
-        </div>
+        <StyledTitle>Disney Characters</StyledTitle>
         <ThemeChanger onChange={toggleTheme} />
       </Wrapper>
     </Wrapper>

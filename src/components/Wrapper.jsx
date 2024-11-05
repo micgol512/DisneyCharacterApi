@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { Box } from "@mui/material";
-import { Theme } from "../context/Theme";
+import { Theme } from "../context";
 
 const Wrapper = ({ children, direction = "row", main = false, ...additionalStyle }) => {
   const { themeStyles } = useContext(Theme);

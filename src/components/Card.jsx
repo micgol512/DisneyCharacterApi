@@ -2,7 +2,7 @@
 import { useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import styled, { css } from "styled-components";
-import { Theme } from "../context/Theme";
+import { Theme } from "../context";
 import ShowDetailsModal from "../modal/ShowDetailsModal";
 import { Image, Button } from "./index";
 
@@ -16,8 +16,11 @@ const Base = styled.div`
   border-radius: 8px 32px;
   width: 150px;
   height: 200px;
-  ${({ themeStyles }) => css`
-    ${{ ...themeStyles }}
+  ${(style) => css`
+    background-color: ${style.backgroundColor};
+    color: ${style.color};
+    border-color: ${style.borderColor};
+    box-shadow: ${style.boxShadow};
   `}
   &:hover {
     scale: 1.05;
@@ -36,7 +39,7 @@ const Card = ({ character }) => {
   );
 
   return (
-    <Base theme={theme} themeStyles={themeStyles}>
+    <Base theme={theme} style={themeStyles}>
       <Image src={character.imageUrl} alt={character.name} height={"125px"} />
       <span>{character.name}</span>
       <Button onClick={infoChanger}>Show more</Button>

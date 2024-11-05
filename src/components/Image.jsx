@@ -6,7 +6,7 @@ const StyledImage = styled.img`
   border: 1px solid #808080;
   border-radius: ${(props) => (props.round ? `50%` : `8px 32px`)};
   object-fit: cover;
-  backgrund-color: #808080;
+  background-color: #808080;
   width: ${(props) => (props.width ? props.width : `150px`)};
   height: ${(props) => (props.height ? props.height : `150px`)};
 `;
@@ -31,28 +31,19 @@ const Image = ({ src, alt, round, width, height }) => {
     checkImage();
   }, [src]);
 
+  if (error)
+    return (
+      <StyledImage
+        src={"../src/assets/images/Noimage.webp"}
+        alt={error}
+        round={round}
+        width={width}
+        height={height}
+      />
+    );
+
   return (
-    <>
-      {error ? (
-        <StyledImage
-          src={"../src/assets/images/Noimage.webp"}
-          alt={error}
-          round={round}
-          width={width}
-          height={height}
-        />
-      ) : (
-        <>
-          <StyledImage
-            src={imageSrc}
-            alt={alt}
-            round={round}
-            width={width}
-            height={height}
-          />
-        </>
-      )}
-    </>
+    <StyledImage src={imageSrc} alt={alt} round={round} width={width} height={height} />
   );
 };
 

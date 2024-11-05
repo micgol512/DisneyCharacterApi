@@ -21,8 +21,13 @@ const basicThemeStyles = {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
   const currentTheme = basicThemeStyles[theme];
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
   return (
-    <Theme.Provider value={{ theme, setTheme, themeStyles: currentTheme }}>
+    <Theme.Provider value={{ theme, setTheme, toggleTheme, themeStyles: currentTheme }}>
       {children}
     </Theme.Provider>
   );

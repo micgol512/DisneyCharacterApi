@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import { Divider } from "@mui/material";
 
@@ -57,8 +58,8 @@ const DetailsContent = styled.div`
   }
 `;
 const FilmsDetails = ({ character, keys }) =>
-  keys.map((key) => (
-    <>
+  keys.map((key, index) => (
+    <Fragment key={`${key}-${index}`}>
       <Divider
         orientation="vertical"
         variant="fullWidth"
@@ -73,7 +74,7 @@ const FilmsDetails = ({ character, keys }) =>
           ))}
         </StyledUl>
       </DetailsContent>
-    </>
+    </Fragment>
   ));
 
 export default FilmsDetails;

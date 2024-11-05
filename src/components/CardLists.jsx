@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import Card from "./Card";
 import styled from "styled-components";
+import { Card } from "./";
 
 const CharWrapper = styled.div`
   display: flex;

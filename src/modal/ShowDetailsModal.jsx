@@ -5,7 +5,7 @@ import { Backdrop, CircularProgress } from "@mui/material";
 import { Theme } from "../context";
 import { useFetch } from "../hooks/useFetch";
 import { useGetCharDetails } from "../hooks/useGetCharDetails";
-import { Button, Image, Wrapper } from "../components/index";
+import { Button, Image, Wrapper } from "../components";
 
 import FilmsDetails from "./FilmsDetails";
 
@@ -21,9 +21,12 @@ const DetailsInfo = styled.div`
   max-width: 1000px;
   height: auto;
   max-height: 200px;
-  ${({ themeStyles }) => css`
-    ${{ ...themeStyles }}
-  `}
+   ${(style) => css`
+     background-color: ${style.backgroundColor};
+     color: ${style.color};
+     border-color: ${style.borderColor};
+     box-shadow: ${style.boxShadow};
+   `}
 `;
 
 const ShowDetailsModal = ({ id, onClick, open }) => {
@@ -49,6 +52,7 @@ const ShowDetailsModal = ({ id, onClick, open }) => {
           maxWidth={"200px"}
           maxHeight={"400px"}
           main
+          justifyContent={"center"}
         >
           <Image
             src={characters.imageUrl}
@@ -78,7 +82,7 @@ const ShowDetailsModal = ({ id, onClick, open }) => {
       open={open}
       onClick={onClick}
     >
-      <DetailsInfo themeStyles={themeStyles} onClick={(e) => e.stopPropagation()}>
+      <DetailsInfo style={themeStyles} onClick={(e) => e.stopPropagation()}>
         {renderDetailsInfo()}
       </DetailsInfo>
     </Backdrop>
